@@ -19,14 +19,17 @@ a {
 
 .option-primary {
     background: #ffa319!important;
+    color:white;
 }
 
 .option-secondary {
     background: #db3e39 !important;
+    color:white;
 }
 
 .option-tertiary {
     background: #2db387!important;
+    color:white
 }
 
 .dropdown-primary {
