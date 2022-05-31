@@ -1,6 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+* {
+font-family:Bahnschrift;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -52,6 +57,102 @@ border-right:0px;
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+.badge-yellow {
+    background: #fbff0c;
+    color: black;
+    box-shadow: 0px 0px 4px 1px #cbc51f;
+}
+
+.badge-blue {
+    background: #2f85c3;
+    box-shadow: 0px 0px 4px 1px #06656e;
+}
+
+.badge-white {
+    background: #ffffff;
+    color: darkgrey;
+    box-shadow: 0px 0px 4px 1px gray;
+}
+
+.badge-gray {
+    background: #838383;
+    box-shadow: 0px 0px 4px 1px #97a39f;
+}
+
+.badge-brown {
+    background: #975c05;
+    box-shadow: 0px 0px 4px 1px #a38a0f;
+}
+
+.badge-purple {
+    background: #7c009b;
+    box-shadow: 0px 0px 4px 1px #390948;
+}
+
+.badge-black {
+    background: #000000;
+    box-shadow: 0px 0px 4px 1px #666161;
+}
+
+.badge-red {
+    background: #cd3838;
+    box-shadow: 0px 0px 4px 1px #a13907;
+}
+.badge-pink {
+    background: #e9365f;
+    box-shadow: 0px 0px 4px 1px #c95776;
+}
+
+.badge-green {
+    background: #1edd85;
+    box-shadow: 0px 0px 4px 1px #57c97a;
+}
+
+.card-yellow {
+    border: 2px solid #fbff0c;
+    box-shadow: 0px -2px 6px -2px #cbc51f;
+}
+
+.card-blue {
+    border: 2px solid #2f85c3;
+    box-shadow: 0px -2px 6px -2px #06656e;
+}
+
+.card-gray {
+    border: 2px solid #838383;
+    box-shadow: 0px -2px 6px -2px #97a39f;
+}
+
+.card-brown {
+    border: 2px solid #975c05;
+    box-shadow: 0px -2px 6px -2px #a38a0f;
+}
+
+.card-black {
+    border: 2px solid #000000;
+    box-shadow: 0px -2px 6px -2px #666161;
+}
+
+.card-purple {
+    border: 2px solid #7c009b;
+    box-shadow: 0px -2px 6px -2px #390948;
+}
+
+.card-red {
+    border: 2px solid #cd3838;
+    box-shadow: 0px -2px 6px -2px #a13907;
+}
+
+.card-pink {
+    border: 2px solid #e9365f;
+    box-shadow: 0px -2px 6px -2px #c95776;
+}
+
+.card-green {
+    border: 2px solid #1edd85;
+    box-shadow: 0px -2px 6px -2px #57c97a;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
