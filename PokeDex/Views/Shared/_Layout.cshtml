@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
+<div class="container-fluid overflow-hidden">
+    <div class="row vh-100 overflow-auto">   
+        <!--<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PokeDex</a>
@@ -28,21 +30,67 @@
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+    </header>-->
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+<img src="~/Images/ball.png" class="bi me-2"/>
+    <span class="fs-4">PokeDex</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item mb-4">
+      <a href="#" class="nav-link option-primary d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>Pokemon</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-primary dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+        <li><a class="dropdown-item" href="#">Pokemon List</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Create Pokemon</a></li>
+      </ul>
+    </li>
+     <li class="nav-item mb-4">
+      <a href="#" class="nav-link option-secondary d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>Pokemon Regions</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-secondary dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+        <li><a class="dropdown-item" href="#">Region List</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Create Region</a></li>
+      </ul>
+    </li>
+
+         <li class="nav-item mb-4">
+      <a href="#" class="nav-link option-tertiary d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>Pokemon Types</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-tertiary dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+        <li><a class="dropdown-item" href="#">Type List</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Create Type</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+
+    <div class="col d-flex flex-column h-sm-100">
+        <main role="main" class="row overflow-auto">
+            <div class="col pt-4">
+              @RenderBody()
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white bg-dark">
         <div class="container">
-            &copy; 2022 - PokeDex - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - PokeDex
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    </div>
+    </div>
 </body>
 </html>
