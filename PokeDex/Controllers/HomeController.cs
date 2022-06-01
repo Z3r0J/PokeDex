@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Pokedex.Application.Services;
+using Pokedex.Database;
 using PokeDex.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,16 @@ namespace PokeDex.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly PokemonServices _pokemonServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationContext dbContext)
         {
-            _logger = logger;
+            _pokemonServices = new(dbContext);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _pokemonServices.GetPokemons());
         }
 
         public IActionResult Privacy()

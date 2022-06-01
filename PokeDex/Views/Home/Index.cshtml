@@ -1,39 +1,64 @@
-﻿@{
+﻿@model List<Pokedex.Application.ViewModel.PokemonViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
-    string[] colorArray = new string[10] {"yellow","blue","white","gray","brown","purple","black","red","pink","green"};
 }
 <div class="row">
         @{
-            foreach(var item in colorArray)
+            foreach(Pokedex.Application.ViewModel.PokemonViewModel item in Model)
             {
-                  <div class="col-sm-4 mb-4">
-                    <div class="card card-@item">
-                    <img src="~/Images/charizard.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"><span class="badge badge-@item">Charizard</span></h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                        <div class="card option-secondary">
-                            <div class="card-body">
-                            
-                            <h5><i class="fa-solid fa-location-dot fa-xs"></i> Region:</h5>
-                            <span>Kanto</span>
+                              <div class="col-sm-4 mb-4">
+                                <div class="card card-@item.Color">
+                                <img src="@item.PhotoUrl" class="card-img-top offset-2" alt="@item.Name">
+                              <div class="card-body">
+                                <h5 class="card-title"><span class="badge badge-@item.Color">@item.Name</span></h5>
+                                <span class="mb-2" style="font-family: 'Flexo-Bold',arial,sans-serif;color: #919191;font-size: 21px;padding-top: 2px;">#@item.Id</span>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    <div class="card option-secondary">
+                                        <div class="card-body">
+                                        
+                                        <h5><i class="fa-solid fa-location-dot fa-xs"></i> Region:</h5>
+                                        <span>@item.RegionName</span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                   <div class="col-sm-6">
+                                    <div class="card option-tertiary">
+                                    @if (@item.FirstTypeName==@item.SecondTypeName || @item.SecondTypeName=="")
+                                {
+                                    <div class="card-body">
+                                        <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
+                                        <div class="row">
+                                        <div class="col-sm-4 offset-2">
+                                        <img src="/Images/{@item.FirstTypeName}.png"/>
+                                        <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
+                                        </div>
+                                        </div>
+                                   </div>
+                                }
+                                    else
+                                    {
+                                     <div class="card-body">
+                                        <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
+                                        <div class="row">
+                                        <div class="col-sm-4">
+                                        <img src="/Images/{@item.FirstTypeName}.png"/>
+                                        <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
+                                        </div>
+                                        <div class="col-sm-4 offset-2">
+                                        <img src="/Images/{@item.SecondTypeName}.png"/>
+                                        <span class="badge background-color-@item.SecondTypeName.ToLower()">@item.SecondTypeName</span>
+                                        </div>
+                                        </div>
+                                   </div>
+                                    }
+                                </div>
+                                    </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        </div>
-                       <div class="col-sm-6">
-                        <div class="card option-tertiary">
-                            <div class="card-body">
-                            <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
-                            <span>Fire</span>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                          </div>
 
             }
         }

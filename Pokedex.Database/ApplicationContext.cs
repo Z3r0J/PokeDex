@@ -22,7 +22,7 @@ namespace Pokedex.Database
 
             #region Tables
 
-            modelBuilder.Entity<Pokemon>().ToTable("Products");
+            modelBuilder.Entity<Pokemon>().ToTable("Pokemon");
             modelBuilder.Entity<Region>().ToTable("Regions");
             modelBuilder.Entity<Models.Type>().ToTable("Types");
 
@@ -47,14 +47,12 @@ namespace Pokedex.Database
             modelBuilder.Entity<Models.Type>()
                 .HasMany<Pokemon>(type => type.PimaryType)
                 .WithOne(pokemon => pokemon.PrimaryType)
-                .HasForeignKey(pokemon => pokemon.PrimaryTypeId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(pokemon => pokemon.PrimaryTypeId);
             
             modelBuilder.Entity<Models.Type>()
                 .HasMany<Pokemon>(type => type.SecondaryType)
                 .WithOne(pokemon => pokemon.SecondaryType)
-                .HasForeignKey(pokemon => pokemon.SecondaryTypeId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(pokemon => pokemon.SecondaryTypeId);
 
             #endregion
 
