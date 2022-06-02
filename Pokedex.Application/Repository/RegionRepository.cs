@@ -22,6 +22,39 @@ namespace Pokedex.Application.Repository
             return new SelectList(_dbContext.Set<Region>().ToList(), "Id", "Name");
         }
 
+        public async Task AddRegionAsync(Region region) {
 
+            await _dbContext.Regions.AddAsync(region);
+            await _dbContext.SaveChangesAsync();
+        
+        }
+
+        public async Task<List<Region>> GetRegionsAsync()
+        {
+
+            return await _dbContext.Set<Region>().ToListAsync();
+        }
+
+        public async Task<Region> GetRegionsById(int Id)
+        {
+
+            return await _dbContext.Set<Region>().FindAsync(Id);
+        }
+
+
+        public async Task UpdateRegionAsync(Region region) {
+
+            _dbContext.Entry(region).State = EntityState.Modified;
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteRegionAsync(Region region) {
+
+            _dbContext.Set<Region>().Remove(region);
+
+            await _dbContext.SaveChangesAsync();
+        
+        }
     }
 }
