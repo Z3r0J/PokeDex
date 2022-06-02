@@ -2,7 +2,7 @@
 
 @{
     bool EditMode = Model.Id == 0 ? false : true;
-    ViewData["Title"] = EditMode?"Edit":"Create";
+    ViewData["Title"] = EditMode?"Edit Pokemon":"Create Pokemon";
 }
 
 <div class="row">
@@ -12,15 +12,17 @@
                 <h3>@(EditMode?"Edit Pokemon":"Create Pokemon")</h3>
             </div>
             <div class="card-body">
-                <form method="post">
+                <form method="post" asp-controller="Pokemon" asp-action=@(EditMode?"Edit":"Create")>
                     <div class="row">
                        <div class="col-md-6 mb-3">
                         <label asp-for="Name" class="form-label">Name:</label>
                         <input type="text" asp-for="Name" placeholder="Insert a Name" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
                        </div>
                         <div class="col-md-6 mb-3">
                         <label asp-for="PhotoUrl" class="form-label">Photo Url:</label>
                         <input type="text" asp-for="PhotoUrl" placeholder="Insert a URL" class="form-control"/>
+                        <span asp-validation-for="PhotoUrl" class="text-danger"></span>
                        </div>
                     </div>
                     <div class="row">
@@ -39,12 +41,14 @@
                             <option value="white">White</option>
                             <option value="green">Green</option>
                         </select>
+                        <span asp-validation-for="Color" class="text-danger"></span>
                        </div>
                         <div class="col-md-6 mb-3">
                         <label asp-for="RegionId" class="form-label">Region:</label>
                         <select asp-for="RegionId" asp-items="Model.Region" class="form-select">
                             <option value="">Select a Region</option>
                         </select>
+                        <span asp-validation-for="RegionId" class="text-danger"></span>
                        </div>
                     </div>
                     <div class="row">
@@ -53,11 +57,12 @@
                             <select asp-for="PrimaryTypeId" asp-items="Model.Type" class="form-select">
                                 <option value="">Select a Primary Type</option>
                             </select>
+                            <span asp-validation-for="PrimaryTypeId" class="text-danger"></span>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label asp-for="SecondaryTypeId" class="form-label">Secondary Type:</label>
                             <select asp-for="SecondaryTypeId" asp-items="Model.Type" class="form-select">
-                                <option value="">Select a Secondary Type</option>
+                                <option value="0">Select a Secondary Type</option>
                             </select>
                         </div>
                     </div>

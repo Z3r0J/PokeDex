@@ -36,6 +36,13 @@ namespace PokeDex.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AddPokemonViewModel vm) {
 
+            if (!ModelState.IsValid)
+            {
+                vm.Region = _regionServices.RegionDrop();
+                vm.Type = _typeServices.TypeDrop();
+            return View("CreatePokemon", vm);
+            }
+
             await _pokemonServices.AddPokemon(vm);
 
             return RedirectToRoute(new { controller = "Pokemon", action = "Index" });
@@ -50,10 +57,29 @@ namespace PokeDex.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(AddPokemonViewModel vm)
         {
+            if (!ModelState.IsValid)
+            {
+                vm.Region = _regionServices.RegionDrop();
+                vm.Type = _typeServices.TypeDrop();
+                return View("CreatePokemon", vm);
+            }
 
             await _pokemonServices.UpdatePokemon(vm);
 
             return RedirectToRoute(new { controller = "Pokemon", action = "Index" });
+        }
+
+        public async Task<IActionResult> Delete(int Id) {
+
+            return View(await _pokemonServices.GetByIdEditPokemon(Id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int Id) {
+
+            await _pokemonServices.DeletePokemon(Id);
+
+            return RedirectToRoute(new { controller="Pokemon",action="Index"});
         }
     }
 }

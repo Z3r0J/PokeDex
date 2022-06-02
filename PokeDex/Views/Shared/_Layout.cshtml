@@ -43,10 +43,10 @@
       <a href="#" class="nav-link option-primary d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <strong>Pokemon</strong>
       </a>
-      <ul class="dropdown-menu dropdown-primary dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-        <li><a class="dropdown-item" href="#">Pokemon List</a></li>
+      <ul class="dropdown-menu dropdown-primary dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" asp-controller="Pokemon" asp-action="Index">Pokemon List</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Create Pokemon</a></li>
+        <li><a class="dropdown-item" asp-controller="Pokemon" asp-action="Create">Create Pokemon</a></li>
       </ul>
     </li>
      <li class="nav-item mb-4">

@@ -29,7 +29,7 @@ namespace Pokedex.Application.Services
             Color=vm.Color,
             RegionId=vm.RegionId,
             PrimaryTypeId=vm.PrimaryTypeId,
-            SecondaryTypeId = vm.SecondaryTypeId
+            SecondaryTypeId = vm.SecondaryTypeId <= 0 ? vm.PrimaryTypeId : vm.SecondaryTypeId
             };
 
             await _repository.AddPokemonAsync(pokemon);
@@ -45,7 +45,7 @@ namespace Pokedex.Application.Services
                 Color = vm.Color,
                 RegionId = vm.RegionId,
                 PrimaryTypeId = vm.PrimaryTypeId,
-                SecondaryTypeId = vm.SecondaryTypeId
+                SecondaryTypeId = vm.SecondaryTypeId <= 0 ? vm.PrimaryTypeId : vm.SecondaryTypeId
             };
 
             await _repository.UpdatePokemonAsync(pokemon);
@@ -69,6 +69,14 @@ namespace Pokedex.Application.Services
             };
 
             return vm;
+        }
+
+        public async Task DeletePokemon(int id) {
+
+            var Pokemon = await _repository.GetPokemonsById(id);
+
+            await _repository.DeletePokemonAsync(Pokemon);
+        
         }
 
         public async Task<List<PokemonViewModel>> GetPokemons() {
