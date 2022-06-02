@@ -19,14 +19,14 @@
                         <input type="text" asp-for="Name" placeholder="Insert a Name" class="form-control"/>
                        </div>
                         <div class="col-md-6 mb-3">
-                        <label asp-for="Name" class="form-label">Photo Url:</label>
-                        <input type="text" asp-for="Name" placeholder="Insert a URL" class="form-control"/>
+                        <label asp-for="PhotoUrl" class="form-label">Photo Url:</label>
+                        <input type="text" asp-for="PhotoUrl" placeholder="Insert a URL" class="form-control"/>
                        </div>
                     </div>
                     <div class="row">
                        <div class="col-md-6 mb-3">
                         <label asp-for="Color" class="form-label">Pokemon Color:</label>
-                        <select class="form-select">
+                        <select class="form-select" asp-for="Color">
                             <option value="">Select a Color</option>
                             <option value="yellow">Yellow</option>
                             <option value="blue">Blue</option>

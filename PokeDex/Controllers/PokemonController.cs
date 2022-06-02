@@ -34,9 +34,26 @@ namespace PokeDex.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddPokemonViewModel vm) { 
-        
-        
+        public async Task<IActionResult> Create(AddPokemonViewModel vm) {
+
+            await _pokemonServices.AddPokemon(vm);
+
+            return RedirectToRoute(new { controller = "Pokemon", action = "Index" });
+        }
+
+        public async Task<IActionResult> Edit(int Id) {
+
+
+            return View("CreatePokemon", await _pokemonServices.GetByIdEditPokemon(Id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AddPokemonViewModel vm)
+        {
+
+            await _pokemonServices.UpdatePokemon(vm);
+
+            return RedirectToRoute(new { controller = "Pokemon", action = "Index" });
         }
     }
 }
