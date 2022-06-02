@@ -1,0 +1,77 @@
+﻿@model Pokedex.Application.ViewModel.AddPokemonViewModel
+
+@{
+    bool EditMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = EditMode?"Edit":"Create";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header badge-red text-white text-center">
+                <h3>@(EditMode?"Edit Pokemon":"Create Pokemon")</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                       <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label">Name:</label>
+                        <input type="text" asp-for="Name" placeholder="Insert a Name" class="form-control"/>
+                       </div>
+                        <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label">Photo Url:</label>
+                        <input type="text" asp-for="Name" placeholder="Insert a URL" class="form-control"/>
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-6 mb-3">
+                        <label asp-for="Color" class="form-label">Pokemon Color:</label>
+                        <select class="form-select">
+                            <option value="">Select a Color</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="blue">Blue</option>
+                            <option value="brown">Brown</option>
+                            <option value="black">Black</option>
+                            <option value="purple">Purple</option>
+                            <option value="gray">Gray</option>
+                            <option value="red">Red</option>
+                            <option value="pink">Pink</option>
+                            <option value="white">White</option>
+                            <option value="green">Green</option>
+                        </select>
+                       </div>
+                        <div class="col-md-6 mb-3">
+                        <label asp-for="RegionId" class="form-label">Region:</label>
+                        <select asp-for="RegionId" asp-items="Model.Region" class="form-select">
+                            <option value="">Select a Region</option>
+                        </select>
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="PrimaryTypeId" class="form-label">Primary Type:</label>
+                            <select asp-for="PrimaryTypeId" asp-items="Model.Type" class="form-select">
+                                <option value="">Select a Primary Type</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="SecondaryTypeId" class="form-label">Secondary Type:</label>
+                            <select asp-for="SecondaryTypeId" asp-items="Model.Type" class="form-select">
+                                <option value="">Select a Secondary Type</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Id"/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-info">@(EditMode?"Edit":"Create")</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
