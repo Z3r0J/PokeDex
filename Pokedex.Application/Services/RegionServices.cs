@@ -44,11 +44,11 @@ namespace Pokedex.Application.Services
                 .ToList();
         }
 
-        public async Task<RegionViewModel> GetRegionById(int id) {
+        public async Task<AddRegionViewModel> GetRegionById(int id) {
 
             var region = await _repository.GetRegionsById(id);
 
-            return new() { RegionId = region.Id, Name = region.Name };
+            return new() { Id = region.Id, Name = region.Name };
         }
 
         public async Task UpdateRegion(RegionViewModel vm) {
