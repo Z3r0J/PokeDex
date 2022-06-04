@@ -17,6 +17,16 @@ a {
   color: #0366d6;
 }
 
+.table-type {
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+.table-type-head {
+    background: #2db387;
+    color: white;
+    font-size: 22px;
+}
+
 .option-primary {
     background: #ffa319!important;
     color:white;

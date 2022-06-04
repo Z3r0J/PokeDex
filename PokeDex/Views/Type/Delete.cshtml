@@ -1,0 +1,24 @@
+﻿@model Pokedex.Application.ViewModel.AddTypeViewModel
+
+@{
+    ViewData["Title"] = "Delete Type";
+}
+
+<div class="row">
+    <div class="col-md-3 offset-4">
+        <div class="card">
+            <div class="card-header badge-red text-center text-white">
+                <h3>Delete Type</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="text-center">¿Are you sure want to delete @Model.Name?</h5>
+                <form asp-controller="Type" asp-action="DeletePost" method="post">
+                    <input asp-for="TypeId" type="hidden" />
+                    <button type="submit" class="btn btn-outline-success">Delete</button>
+                    <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+</div>
+</div>
+

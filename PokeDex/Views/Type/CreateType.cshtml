@@ -1,0 +1,28 @@
+﻿@model Pokedex.Application.ViewModel.AddTypeViewModel
+
+@{
+    bool editMode = Model.TypeId == 0 ? false : true;
+
+    ViewData["Title"] = editMode?"Edit Type":"Create Type";
+}
+
+<div class="row">
+    <div class="col-md-3 offset-4">
+        <div class="card">
+            <div class="card-header badge-green text-center text-white">
+                <h3>@(editMode?"Edit Type":"Create Type")</h3>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Type" asp-action=@(editMode?"Edit":"Create") method="post">
+                    <input asp-for="TypeId" type="hidden" />
+
+                    <label asp-for="Name" class="form-label">Name:</label>
+                    <input  asp-for="Name" type="text" class="form-control mb-3"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <button type="submit" class="btn btn-outline-success">@(editMode?"Edit":"Create")</button>
+                    <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+</div>
+</div>
