@@ -19,9 +19,9 @@ namespace Pokedex.Application.ViewModel
         public string PhotoUrl { get; set; }
         [Required(ErrorMessage ="Pokemon color is Required Ex. Pikachu is Yellow")]
         public string Color { get; set; }
-        [Required(ErrorMessage = "The Region is Required Ex. Kanto")]
+        [Range(1, int.MaxValue, ErrorMessage = "The Region is required ex. Kanto")]
         public int RegionId { get; set; }
-        [Required(ErrorMessage = "The Primary Type is Required Ex. Electric")]
+        [Range(1,int.MaxValue,ErrorMessage ="The Type is required Ex. Water")]
         public int PrimaryTypeId { get; set; }
         public int SecondaryTypeId { get; set; }
 
