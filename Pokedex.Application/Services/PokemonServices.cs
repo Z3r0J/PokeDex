@@ -92,5 +92,20 @@ namespace Pokedex.Application.Services
                 SecondTypeName=pokemon.SecondaryType.Name}).ToList();        
         }
 
+
+        public async Task<List<PokemonViewModel>> GetPokemonByName(string name) { 
+        
+            var Pokemon = await _repository.GetPokemonByName(name);
+
+            return Pokemon.Select(Pokemon=> new PokemonViewModel { 
+            Id = Pokemon.Id,
+            Name = Pokemon.Name,
+            PhotoUrl = Pokemon.PhotoUrl,
+            Color = Pokemon.Color,
+            RegionName = Pokemon.Region.Name,
+            FirstTypeName = Pokemon.PrimaryType.Name,
+            SecondTypeName = Pokemon.SecondaryType.Name
+            }).ToList();
+        }
     }
 }

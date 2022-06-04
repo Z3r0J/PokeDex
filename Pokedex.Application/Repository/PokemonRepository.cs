@@ -47,6 +47,11 @@ namespace Pokedex.Application.Repository
                 
         }
 
+        public async Task<List<Pokemon>> GetPokemonByName(string name) { 
+        
+        return await _dbContext.Set<Pokemon>().Include(pokemon => pokemon.Region).Include(pokemon => pokemon.PrimaryType).Include(pokemon => pokemon.SecondaryType).Where(pokemon=>pokemon.Name==name).ToListAsync();
+        }
+
 
 
     }

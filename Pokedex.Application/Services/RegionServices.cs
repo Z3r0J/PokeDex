@@ -24,10 +24,10 @@ namespace Pokedex.Application.Services
             return _repository.RegionDropDown();
         }
 
-        public async Task AddRegion(RegionViewModel vm) {
+        public async Task AddRegion(AddRegionViewModel vm) {
 
             Region region = new() {
-            Id = vm.RegionId,
+            Id = vm.Id,
             Name = vm.Name
             };
 
@@ -51,11 +51,11 @@ namespace Pokedex.Application.Services
             return new() { Id = region.Id, Name = region.Name };
         }
 
-        public async Task UpdateRegion(RegionViewModel vm) {
+        public async Task UpdateRegion(AddRegionViewModel vm) {
 
             Region region = new()
             {
-                Id = vm.RegionId,
+                Id = vm.Id,
                 Name = vm.Name
             };
 

@@ -24,5 +24,15 @@ namespace PokeDex.Controllers
         {
             return View(await _pokemonServices.GetPokemons());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> FindByName(string name)
+        {
+
+            if (string.IsNullOrEmpty(name)) {
+                return RedirectToRoute(new {controller="Home",Action="Index"});
+            }
+            return View("Index", await _pokemonServices.GetPokemonByName(name));
+        }
     }
 }

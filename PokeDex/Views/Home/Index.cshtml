@@ -5,75 +5,94 @@
 }
 
 <div class="row mb-3">
-            <div class="col-sm-3 offset-sm-9">
+            <div class="col-sm-4">
+        <h2>Home</h2>
+    </div>
+            <div class="col-sm-3 offset-sm-5">
         <a asp-controller="Pokemon" asp-action="Create" class="btn btn-outline-info">Create New Pokemon</a>
         </div>
 </div>
+
+<div class="row mb-3">
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-3 offset-5">
+        <form asp-controller="Home" asp-action="FindByName">
+            <div class="d-flex justify-content-center align-items-center">
+             <input type="text" name="name" id="name" class="form-control" placeholder="Find by Name"/>
+             <button type="submit" class="btn btn-outline-dark"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
 <div class="row">
     @{
 
         if (Model == null || Model.Count == 0)
         {
-            <div class="col-4 offset-5">
-                <h5>No exist Pokemon(s)</h5>
-            </div>
+                <div class="col-4 offset-5">
+                    <h5>No exist Pokemon(s)</h5>
+                </div>
         }
         else
         {
             foreach(Pokedex.Application.ViewModel.PokemonViewModel item in Model)
             {
-                              <div class="col-sm-4 mb-4">
-                                <div class="card card-@item.Color">
-                                <img src="@item.PhotoUrl" class="card-img-top offset-2" alt="@item.Name">
-                              <div class="card-body">
-                                <h5 class="card-title"><span class="badge badge-@item.Color">@item.Name</span></h5>
-                                <span class="mb-2" style="font-family: 'Flexo-Bold',arial,sans-serif;color: #919191;font-size: 21px;padding-top: 2px;">#@item.Id</span>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                    <div class="card card-information">
-                                        <div class="card-body">
-                                        
-                                        <h5><i class="fa-solid fa-location-dot fa-xs"></i> Region:</h5>
-                                        <span>@item.RegionName</span>
+                                  <div class="col-sm-4 mb-4">
+                                    <div class="card card-@item.Color">
+                                    <img src="@item.PhotoUrl" class="card-img-top offset-2" alt="@item.Name">
+                                  <div class="card-body">
+                                    <h5 class="card-title"><span class="badge badge-@item.Color">@item.Name</span></h5>
+                                    <span class="mb-2" style="font-family: 'Flexo-Bold',arial,sans-serif;color: #919191;font-size: 21px;padding-top: 2px;">#@item.Id</span>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                        <div class="card card-information">
+                                            <div class="card-body">
+                                            
+                                            <h5><i class="fa-solid fa-location-dot fa-xs"></i> Region:</h5>
+                                            <span>@item.RegionName</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    </div>
-                                   <div class="col-sm-6">
-                                    <div class="card card-information">
-                                    @if (@item.FirstTypeName==@item.SecondTypeName || @item.SecondTypeName=="")
+                                        </div>
+                                       <div class="col-sm-6">
+                                        <div class="card card-information">
+                                        @if (@item.FirstTypeName==@item.SecondTypeName || @item.SecondTypeName=="")
                                 {
-                                    <div class="card-body">
-                                        <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
-                                        <div class="row">
-                                        <div class="col-sm-4 offset-2">
-                                        <img src="/Images/{@item.FirstTypeName}.png"/>
-                                        <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
-                                        </div>
-                                        </div>
-                                   </div>
+                                        <div class="card-body">
+                                            <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
+                                            <div class="row">
+                                            <div class="col-sm-4 offset-2">
+                                            <img src="/Images/{@item.FirstTypeName}.png"/>
+                                            <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
+                                            </div>
+                                            </div>
+                                       </div>
                                 }
                                     else
                                     {
-                                     <div class="card-body">
-                                        <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
-                                        <div class="row">
-                                        <div class="col-sm-4">
-                                        <img src="/Images/{@item.FirstTypeName}.png"/>
-                                        <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
-                                        </div>
-                                        <div class="col-sm-4 offset-2">
-                                        <img src="/Images/{@item.SecondTypeName}.png"/>
-                                        <span class="badge background-color-@item.SecondTypeName.ToLower()">@item.SecondTypeName</span>
-                                        </div>
-                                        </div>
-                                   </div>
+                                         <div class="card-body">
+                                            <h5><i class="fa-solid fa-circle-info fa-xs"></i> Type:</h5>
+                                            <div class="row">
+                                            <div class="col-sm-4">
+                                            <img src="/Images/{@item.FirstTypeName}.png"/>
+                                            <span class="badge background-color-@item.FirstTypeName.ToLower()">@item.FirstTypeName</span>
+                                            </div>
+                                            <div class="col-sm-4 offset-2">
+                                            <img src="/Images/{@item.SecondTypeName}.png"/>
+                                            <span class="badge background-color-@item.SecondTypeName.ToLower()">@item.SecondTypeName</span>
+                                            </div>
+                                            </div>
+                                       </div>
                                     }
-                                </div>
                                     </div>
+                                        </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
 
             }
         }

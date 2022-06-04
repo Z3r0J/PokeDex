@@ -1,0 +1,43 @@
+﻿@model List<Pokedex.Application.ViewModel.RegionViewModel>
+
+@{
+    ViewData["Title"] = "Region List";
+}
+
+<div class="row mb-3">
+    <div class="col-sm-4">
+        <h2>Region List</h2>
+    </div>
+            <div class="col-sm-3 offset-sm-5">
+        <a asp-controller="Region" asp-action="Create" class="btn btn-outline-danger">Create New Region</a>
+        </div>
+</div>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <table class="table table-striped table-type table-hover border border-light caption-top">
+            <thead class="table-type-head bg-danger">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                 <tr>
+                     <td>@item.RegionId</td>
+                     <td>@item.Name</td>
+                     <td>
+                     <a asp-action="Edit" asp-controller="Region" asp-route-id="@item.RegionId" class="btn btn-warning">Edit</a>
+                     <a asp-action="Delete" asp-controller="Region" asp-route-id="@item.RegionId" class="btn btn-danger">Delete</a>
+                     </td>
+                 </tr>   
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

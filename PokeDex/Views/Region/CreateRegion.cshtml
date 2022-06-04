@@ -1,20 +1,20 @@
-﻿@model Pokedex.Application.ViewModel.AddTypeViewModel
+﻿@model Pokedex.Application.ViewModel.AddRegionViewModel
 
 @{
-    bool editMode = Model.TypeId == 0 ? false : true;
+    bool editMode = Model.Id == 0 ? false : true;
 
-    ViewData["Title"] = editMode?"Edit Type":"Create Type";
+    ViewData["Title"] = editMode?"Edit Region":"Create Region";
 }
 
 <div class="row">
     <div class="col-md-3 offset-4">
         <div class="card">
-            <div class="card-header badge-green text-center text-white">
-                <h3>@(editMode?"Edit Type":"Create Type")</h3>
+            <div class="card-header badge-brown text-center text-white">
+                <h3>@(editMode?"Edit Region":"Create Region")</h3>
             </div>
             <div class="card-body">
-                <form asp-controller="Type" asp-action=@(editMode?"Edit":"Create") method="post">
-                    <input asp-for="TypeId" type="hidden" />
+                <form asp-controller="Region" asp-action=@(editMode?"Edit":"Create") method="post">
+                    <input asp-for="Id" type="hidden" />
 
                     <label asp-for="Name" class="form-label">Name:</label>
                     <input  asp-for="Name" type="text" class="form-control mb-3"/>
