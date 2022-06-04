@@ -89,7 +89,8 @@ namespace Pokedex.Application.Services
                 Color=pokemon.Color,
                 RegionName=pokemon.Region.Name,
                 FirstTypeName=pokemon.PrimaryType.Name,
-                SecondTypeName=pokemon.SecondaryType.Name}).ToList();        
+                SecondTypeName=pokemon.SecondaryType.Name
+            }).ToList();        
         }
 
 
@@ -105,6 +106,23 @@ namespace Pokedex.Application.Services
             RegionName = Pokemon.Region.Name,
             FirstTypeName = Pokemon.PrimaryType.Name,
             SecondTypeName = Pokemon.SecondaryType.Name
+            }).ToList();
+        }
+
+        public async Task<List<PokemonViewModel>> GetPokemonByRegion(int id)
+        {
+
+            var Pokemon = await _repository.GetPokemonByRegion(id);
+
+            return Pokemon.Select(Pokemon => new PokemonViewModel
+            {
+                Id = Pokemon.Id,
+                Name = Pokemon.Name,
+                PhotoUrl = Pokemon.PhotoUrl,
+                Color = Pokemon.Color,
+                RegionName = Pokemon.Region.Name,
+                FirstTypeName = Pokemon.PrimaryType.Name,
+                SecondTypeName = Pokemon.SecondaryType.Name
             }).ToList();
         }
     }

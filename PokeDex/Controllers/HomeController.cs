@@ -14,14 +14,18 @@ namespace PokeDex.Controllers
     public class HomeController : Controller
     {
         private readonly PokemonServices _pokemonServices;
+        private readonly RegionServices _regionServices;
 
         public HomeController(ApplicationContext dbContext)
         {
             _pokemonServices = new(dbContext);
+            _regionServices = new RegionServices(dbContext);
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Region = _regionServices.RegionDrop();
+
             return View(await _pokemonServices.GetPokemons());
         }
 
@@ -30,9 +34,28 @@ namespace PokeDex.Controllers
         {
 
             if (string.IsNullOrEmpty(name)) {
-                return RedirectToRoute(new {controller="Home",Action="Index"});
+                return RedirectToRoute(new { controller = "Home", Action = "Index" });
             }
+
+            ViewBag.Region = _regionServices.RegionDrop();
+
             return View("Index", await _pokemonServices.GetPokemonByName(name));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FilterByRegion(int id)
+        {
+
+            if (id == 0)
+            {
+                return RedirectToRoute(new { controller = "Home", Action = "Index" });
+            }
+
+            ViewBag.Region = _regionServices.RegionDrop();
+
+
+            return View("Index", await _pokemonServices.GetPokemonByRegion(id));
+
         }
     }
 }
